@@ -1,6 +1,6 @@
 class AlbumsController < ApplicationController
 
-  before_action :get_artist
+  before_action :get_artist, except: [:genre]
   before_action :get_album, only: [:show, :update, :destroy]
 
   def index 
@@ -24,8 +24,25 @@ class AlbumsController < ApplicationController
   def destroy
     @album.destroy
     head :no_content
-  end 
+  end
 
+  def genre
+    albums = Album.all.sort_by { |k| k.genre}
+    sorted_albums = []
+    ranked = {}
+    # New array of unique genre names
+    all_genres = albums.map{|f| f.genre}.uniq
+    # Iterate through the all_genres array and select the albums that match. Push them into a new array of sorted_albums
+    all_genres.each do |g|
+      sorted_albums.push(albums.select{ |a| a.genre == g })
+    end
+    # Iterate through the sorted_albums and create a hash of the genre and the length
+    sorted_albums.each do |a|
+      ranked[a.first.genre] = a.length
+    end
+    @genre_ranked = ranked.sort_by(&:last).reverse.to_h
+    render json: @genre_ranked, status: 200
+  end 
 
   private
 

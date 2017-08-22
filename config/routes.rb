@@ -4,5 +4,6 @@ Rails.application.routes.draw do
     resources :albums
   end 
 
+  get 'genre', to: 'albums#genre'
 
 end

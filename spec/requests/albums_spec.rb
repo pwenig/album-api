@@ -27,7 +27,7 @@ RSpec.describe 'Ablums API', type: :request do
     before { get "/artists/#{artist_id}/albums/#{album_id}" }
 
     it 'returns the album' do
-      expect( json ).not_to be_empty
+      expect(json).not_to be_empty
     end 
 
   end 
@@ -67,6 +67,18 @@ RSpec.describe 'Ablums API', type: :request do
     end 
 
   end 
+
+  describe 'GET /genre' do
+
+    before { get "/genre"  }
+
+    it 'returns a successful response code' do
+      expect(json).to_not be_empty
+      expect(json['Rock']).to eq(3)
+    end 
+
+  end 
+
 
 end
 
