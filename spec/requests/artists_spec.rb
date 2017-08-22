@@ -42,7 +42,7 @@ RSpec.describe 'Artists API', type: :request do
       before { post '/artists', params: create_params }
       
           it 'creates an artist' do
-            expect( json['name']).to eq('Bruce Springsteen')
+            expect(json['name']).to eq('Bruce Springsteen')
           end
       
           it 'returns a successful status code' do
@@ -68,10 +68,6 @@ end
     # Set the updated params
     let(:updated_params) { {name: 'Mick Jagger'} }
     before { put "/artists/#{artist_id}", params: updated_params }
-
-    # it 'updates the artist' do
-    #   expect( json['name']).to eq('Mick Jagger')
-    # end 
 
     it 'returns a successful code' do
       expect(response).to have_http_status(204)

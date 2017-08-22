@@ -9,7 +9,7 @@ class ArtistsController < ApplicationController
 
   def show
     # Include the artist album's
-   render :json => @artist, :include => :albums 
+   render :json => @artist, :include => :albums, status: 200 
   end 
 
   def create
