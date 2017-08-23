@@ -1,9 +1,9 @@
 class AlbumsController < ApplicationController
 
-  before_action :get_artist, except: [:genre]
   before_action :get_album, only: [:show, :update, :destroy]
 
   def index 
+    @albums = Album.all
     render json: @albums, status: 200
   end
 
@@ -12,8 +12,13 @@ class AlbumsController < ApplicationController
   end
 
   def create
-    @album = @artist.albums.create!(permitted_params)
-    render json: @album, status: 201
+    @artist = Artist.find(params[:artist_id])
+    if @artist
+      @album = @artist.albums.create!(permitted_params)
+      render json: @album, status: 201
+    else
+      render status: 404
+    end
   end
 
   def update
@@ -26,7 +31,8 @@ class AlbumsController < ApplicationController
     head :no_content
   end
 
-  def genre
+  # Returns a sorted object of genres and the number of each albums in each genre.
+  def genre_ranking
     albums = Album.all.sort_by { |k| k.genre}
     sorted_albums = []
     ranked = {}
@@ -46,15 +52,6 @@ class AlbumsController < ApplicationController
 
   private
 
-  def get_artist
-    @artist = Artist.find(params[:artist_id])
-    if @artist
-      @albums = @artist.albums
-    else
-      @albums = []
-    end
-  end 
-  
   def get_album
     @album = Album.find(params[:id])
   end

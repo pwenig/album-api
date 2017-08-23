@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Ablums API', type: :request do
+RSpec.describe 'Albums API', type: :request do
 
   # Create an artist
   let!(:artists) { create_list(:artist, 1) }
@@ -11,23 +11,37 @@ RSpec.describe 'Ablums API', type: :request do
   let!(:albums) {create_list(:album, 3, artist_id: artist_id) }
   let(:album_id) { albums.first.id }
 
-  describe 'GET /artists/:artist_id/albums' do
+  describe 'GET /albums' do
 
-    before { get "/artists/#{artist_id}/albums"}
+    before { get '/albums'}
+
+    it 'returns all of the albums' do
+      expect(json).to_not be_empty
+      expect(json.length).to eq(3)
+    end 
+
+  end 
+
+
+  describe 'GET /artists/:artist_id' do
+
+    before { get "/artists/#{artist_id}"}
 
     it 'returns all of the artist albums' do
-      expect(json.length).to eq(3)
+      expect( json['albums'].length).to eq(3)
+      expect(json['albums'][0]['artist_id']).to eq(artist_id)
 
     end 
 
   end 
 
-  describe 'GET /artists/:artist_id/albums/:id' do
+  describe 'GET /albums/:id' do
 
-    before { get "/artists/#{artist_id}/albums/#{album_id}" }
+    before { get "/albums/#{album_id}" }
 
     it 'returns the album' do
       expect(json).not_to be_empty
+      expect(json['id']).to eq(album_id)
     end 
 
   end 
@@ -45,22 +59,12 @@ RSpec.describe 'Ablums API', type: :request do
 
   end 
 
-  describe 'PUT /artists/:artist_id/albums/:id' do
+  describe 'PUT /albums/:id' do
 
     # Set the updated params
-    let(:updated_params) { {album: 'Nebrasks' } }
+    let(:updated_params) { {album: 'Nebraska' } }
 
-    before { put "/artists/#{artist_id}/albums/#{album_id}" }
-
-    it 'returns a successful response code' do
-      expect(response).to have_http_status(204)
-    end 
-
-  end 
-
-  describe 'DELETE /artists/:artist_id/albums/:id' do
-
-    before { delete "/artists/#{artist_id}/albums/#{album_id}" }
+    before { put "/albums/#{album_id}" }
 
     it 'returns a successful response code' do
       expect(response).to have_http_status(204)
@@ -68,9 +72,18 @@ RSpec.describe 'Ablums API', type: :request do
 
   end 
 
-  describe 'GET /genre' do
+  describe 'DELETE /albums/:id' do
 
-    before { get "/genre"  }
+    before { delete "/albums/#{album_id}" }
+    it 'returns a successful response code' do
+      expect(response).to have_http_status(204)
+    end 
+
+  end 
+
+  describe 'POST /albums/genre_ranking' do
+
+    before { post "/albums/genre_ranking"  }
 
     it 'returns a successful response code' do
       expect(json).to_not be_empty

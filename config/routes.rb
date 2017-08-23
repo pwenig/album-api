@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
   resources :artists do
-    resources :albums
+    resources :albums, only: [:create ]
   end 
 
-  get 'genre', to: 'albums#genre'
+  resources :albums, only: [:index, :update, :destroy, :show]
+  post '/albums/genre_ranking', to: 'albums#genre_ranking'
 
 end
