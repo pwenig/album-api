@@ -110,22 +110,22 @@ This is an api that provides an index of artists, albums, and artist's albums.
     Response Data: [
     
         {
-            "id": 1,
-            "album": "Thriller",
-            "genre": "Pop",
-            "year": "1982",
-            "artist_id": 1,
-            "created_at": "2017-08-22T19:28:49.958Z",
-            "updated_at": "2017-08-22T19:28:49.958Z"
+          "id": 1,
+          "album": "Thriller",
+          "genre": "Pop",
+          "year": "1982",
+          "artist_id": 1,
+          "created_at": "2017-08-22T19:28:49.958Z",
+          "updated_at": "2017-08-22T19:28:49.958Z"
         },
         {
-            "id": 2,
-            "album": "Singles",
-            "genre": "Indie",
-            "year": "2014",
-            "artist_id": 2,
-            "created_at": "2017-08-22T19:28:49.965Z",
-            "updated_at": "2017-08-22T19:28:49.965Z"
+          "id": 2,
+          "album": "Singles",
+          "genre": "Indie",
+          "year": "2014",
+          "artist_id": 2,
+          "created_at": "2017-08-22T19:28:49.965Z",
+          "updated_at": "2017-08-22T19:28:49.965Z"
         } ]
 
   * Title: Album
@@ -137,13 +137,13 @@ This is an api that provides an index of artists, albums, and artist's albums.
       Response Data:
       
           {
-              "id": 1,
-              "album": "Thriller",
-              "genre": "Pop",
-              "year": "1982",
-              "artist_id": 1,
-              "created_at": "2017-08-22T19:28:49.958Z",
-              "updated_at": "2017-08-22T19:28:49.958Z"
+            "id": 1,
+            "album": "Thriller",
+            "genre": "Pop",
+            "year": "1982",
+            "artist_id": 1,
+            "created_at": "2017-08-22T19:28:49.958Z",
+            "updated_at": "2017-08-22T19:28:49.958Z"
           }
 
   * Title: Album
@@ -165,13 +165,13 @@ This is an api that provides an index of artists, albums, and artist's albums.
       Response Data:
 
         {
-            "id": 104,
-            "album": "\"Nebraska\"",
-            "genre": "\"Rock\"",
-            "year": "\"1989\"",
-            "artist_id": 1,
-            "created_at": "2017-08-23T02:33:24.739Z",
-            "updated_at": "2017-08-23T02:33:24.739Z"
+          "id": 104,
+          "album": "\"Nebraska\"",
+          "genre": "\"Rock\"",
+          "year": "\"1989\"",
+          "artist_id": 1,
+          "created_at": "2017-08-23T02:33:24.739Z",
+          "updated_at": "2017-08-23T02:33:24.739Z"
         }
         
 
@@ -215,12 +215,12 @@ This is an api that provides an index of artists, albums, and artist's albums.
     Response Data: 
     
         {
-        "1994": 6,
-        "1999": 4,
-        "2010": 4,
-        "2013": 4,
-        "2016": 9
-    }
+          "1994": 6,
+          "1999": 4,
+          "2010": 4,
+          "2013": 4,
+          "2016": 9
+        }
 
 
   
