@@ -177,7 +177,7 @@ This is an api that provides an index of artists, albums, and artist's albums.
 
   
 
-  * Title: Genre Ranking - Lists genres and the number of each albums in each genre.
+  * Title: Genre Ranking - Lists genres and the number of albums in each genre.
 
     URL: /albums/genre_ranking
 
