@@ -33,21 +33,15 @@ class AlbumsController < ApplicationController
 
   # Returns a sorted object of genres and the number of each albums in each genre.
   def genre_ranking
-    albums = Album.all.sort_by { |k| k.genre}
-    sorted_albums = []
-    ranked = {}
-    # New array of unique genre names
-    all_genres = albums.map{|f| f.genre}.uniq
-    # Iterate through the all_genres array and select the albums that match. Push them into a new array of sorted_albums
-    all_genres.each do |g|
-      sorted_albums.push(albums.select{ |a| a.genre == g })
-    end
-    # Iterate through the sorted_albums and create a hash of the genre and the length
-    sorted_albums.each do |a|
-      ranked[a.first.genre] = a.length
-    end
-    @genre_ranked = ranked.sort_by(&:last).reverse.to_h
-    render json: @genre_ranked, status: 200
+    ranked_albums = sorted_albums('genre')
+    render json: ranked_albums.sort_by(&:last).reverse.to_h, status: 200
+  end 
+
+  # Returns a sorted object of the top five years with the most number of albums.
+  def year_ranking
+    ranked_albums = sorted_albums('year')
+    render json: ranked_albums.sort_by(&:last).reverse[0...5].to_h, status: 200
+    
   end 
 
   private
@@ -60,5 +54,22 @@ class AlbumsController < ApplicationController
     params.permit(:album, :genre, :year)
   end
 
+  # Sorts albums by attribute
+  def sorted_albums(sort_attr)
+    albums = Album.all.sort_by { |k| k["#{sort_attr}"]}
+    sorted_albums = []
+    ranked = {}
+
+    initial_sort = albums.map{ |f| f["#{sort_attr}"] }.uniq
+    initial_sort.each do |y|
+      sorted_albums.push(albums.select{ |a| a["#{sort_attr}"] == y })
+    end 
+
+    sorted_albums.each do |a|
+      ranked[a.first["#{sort_attr}"]] = a.length
+    end
+
+    ranked
+  end 
 
 end

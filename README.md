@@ -14,7 +14,7 @@ This is an api that provides an index of artists, albums, and artist's albums.
 
 * To run tests:
   * $bundle exec rspec
-  * 17 passing tests (17 examples, 0 failures)
+  * 18 passing tests (18 examples, 0 failures)
 
 * Endpoints (test with Postman):
 
@@ -177,7 +177,7 @@ This is an api that provides an index of artists, albums, and artist's albums.
 
   
 
-  * Title: Genre Ranking
+  * Title: Genre Ranking - Lists genres and the number of each albums in each genre.
 
     URL: /albums/genre_ranking
 
@@ -205,6 +205,22 @@ This is an api that provides an index of artists, albums, and artist's albums.
           "R&B": 1,
           "Shoegaze": 1
         }
+
+  * Title: Year Ranking - Lists the top five years with the most number of albums.
+
+    URL: /albums/year_ranking
+
+    Method: POST
+
+    Response Data: 
+    
+        {
+        "1994": 6,
+        "1999": 4,
+        "2010": 4,
+        "2013": 4,
+        "2016": 9
+    }
 
 
   

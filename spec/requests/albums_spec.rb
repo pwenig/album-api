@@ -92,6 +92,17 @@ RSpec.describe 'Albums API', type: :request do
 
   end 
 
+  describe 'POST /albums/year_ranking' do
+    
+    before { post "/albums/year_ranking"  }
+
+    it 'returns a successful response code' do
+      expect(json).to_not be_empty
+      expect(json['1975']).to eq(3)
+    end 
+
+  end 
+
 
 end
 
