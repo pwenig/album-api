@@ -12,9 +12,6 @@ This is an api that provides an index of artists, albums, and artist's albums.
   * rake db:migrate
   * rake db:seed (this will load the csv file that is included)
 
-* Run tests:
-  * $bundle exec rspec
-
 * To run tests:
   * $bundle exec rspec
   * 17 passing tests (17 examples, 0 failures)
