@@ -26,19 +26,40 @@ This is an api that provides an index of artists, albums, and artist's albums.
 
     Response Data: 
     
-        [{
-              "id": 1,
-              "name": "Michael Jackson",
-              "created_at": "2017-08-22T19:28:49.569Z",
-              "updated_at": "2017-08-22T19:28:49.569Z"
-          },
-          {
-              "id": 2,
-              "name": "Future Islands",
-              "created_at": "2017-08-22T19:28:49.573Z",
-              "updated_at": "2017-08-22T19:28:49.573Z"
-          }] 
-
+        [
+            {
+                "id": 1,
+                "name": "Michael Jackson",
+                "albums": 
+                  [
+                      {
+                          "id": 1,
+                          "album": "Thriller",
+                          "genre": "Pop",
+                          "year": "1982"
+                      },
+                      {
+                          "id": 90,
+                          "album": "Dangerous",
+                          "genre": "Pop",
+                          "year": "1991"
+                      }
+                    ]
+              },
+              {
+                  "id": 2,
+                  "name": "Future Islands",
+                  "albums": 
+                  [
+                      {
+                          "id": 2,
+                          "album": "Singles",
+                          "genre": "Indie",
+                          "year": "2014"
+                      }
+                  ]
+              } 
+          ]
   
   * Title: Artist and Artist's Albums
 
@@ -49,30 +70,23 @@ This is an api that provides an index of artists, albums, and artist's albums.
     Response Data: 
     
         {
-          "id": 1,
-          "name": "Michael Jackson",
-          "created_at": "2017-08-22T19:28:49.569Z",
-          "updated_at": "2017-08-22T19:28:49.569Z",
-          "albums": [
-              {
-                  "id": 1,
-                  "album": "Thriller",
-                  "genre": "Pop",
-                  "year": "1982",
-                  "artist_id": 1,
-                  "created_at": "2017-08-23T02:48:31.192Z",
-                  "updated_at": "2017-08-23T02:48:31.192Z"
-              },
-              {
-                "id": 90,
-                "album": "Dangerous",
-                "genre": "Pop",
-                "year": "1991",
-                "artist_id": 1,
-                "created_at": "2017-08-23T02:48:31.674Z",
-                "updated_at": "2017-08-23T02:48:31.674Z"
-            }
-          ]
+            "id": 1,
+            "name": "Michael Jackson",
+            "albums": 
+              [
+                {
+                    "id": 1,
+                    "album": "Thriller",
+                    "genre": "Pop",
+                    "year": "1982"
+                },
+                {
+                    "id": 90,
+                    "album": "Dangerous",
+                    "genre": "Pop",
+                    "year": "1991"
+                }
+              ]
         }
   
   
@@ -87,10 +101,9 @@ This is an api that provides an index of artists, albums, and artist's albums.
     Response Data: [
 
           {
-              "id": 1,
-              "name": "Michael Jackson",
-              "created_at": "2017-08-22T19:28:49.569Z",
-              "updated_at": "2017-08-22T19:28:49.569Z"
+              "id": 92,
+              "name": "Keb Mo",
+              "albums": []
           }
 
   * Title: Artist
@@ -107,26 +120,32 @@ This is an api that provides an index of artists, albums, and artist's albums.
 
     Method: GET
 
-    Response Data: [
+    Response Data: 
     
-        {
-          "id": 1,
-          "album": "Thriller",
-          "genre": "Pop",
-          "year": "1982",
-          "artist_id": 1,
-          "created_at": "2017-08-22T19:28:49.958Z",
-          "updated_at": "2017-08-22T19:28:49.958Z"
-        },
-        {
-          "id": 2,
-          "album": "Singles",
-          "genre": "Indie",
-          "year": "2014",
-          "artist_id": 2,
-          "created_at": "2017-08-22T19:28:49.965Z",
-          "updated_at": "2017-08-22T19:28:49.965Z"
-        } ]
+        [
+          {
+              "id": 1,
+              "album": "Thriller",
+              "genre": "Pop",
+              "year": "1982",
+              "artist": 
+                {
+                    "id": 1,
+                    "name": "Michael Jackson"
+                }
+          },
+          {
+              "id": 2,
+              "album": "Singles",
+              "genre": "Indie",
+              "year": "2014",
+              "artist": 
+                {
+                  "id": 2,
+                  "name": "Future Islands"
+                }
+          }
+        ]
 
   * Title: Album
 
@@ -137,13 +156,14 @@ This is an api that provides an index of artists, albums, and artist's albums.
       Response Data:
       
           {
-            "id": 1,
-            "album": "Thriller",
-            "genre": "Pop",
-            "year": "1982",
-            "artist_id": 1,
-            "created_at": "2017-08-22T19:28:49.958Z",
-            "updated_at": "2017-08-22T19:28:49.958Z"
+              "id": 1,
+              "album": "Thriller",
+              "genre": "Pop",
+              "year": "1982",
+              "artist": {
+                  "id": 1,
+                  "name": "Michael Jackson"
+              }
           }
 
   * Title: Album
@@ -165,13 +185,15 @@ This is an api that provides an index of artists, albums, and artist's albums.
       Response Data:
 
         {
-          "id": 104,
-          "album": "\"Nebraska\"",
-          "genre": "\"Rock\"",
-          "year": "\"1989\"",
-          "artist_id": 1,
-          "created_at": "2017-08-23T02:33:24.739Z",
-          "updated_at": "2017-08-23T02:33:24.739Z"
+            "id": 110,
+            "album": "Thriller v2",
+            "genre": "Rock",
+            "year": "2018",
+            "artist": 
+              {
+                  "id": 1,
+                  "name": "Michael Jackson"
+              }
         }
         
 

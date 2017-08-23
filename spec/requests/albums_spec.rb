@@ -28,9 +28,8 @@ RSpec.describe 'Albums API', type: :request do
     before { get "/artists/#{artist_id}"}
 
     it 'returns all of the artist albums' do
+      expect(json['id']).to eq(artist_id)
       expect( json['albums'].length).to eq(3)
-      expect(json['albums'][0]['artist_id']).to eq(artist_id)
-
     end 
 
   end 
