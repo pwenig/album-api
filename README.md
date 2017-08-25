@@ -203,7 +203,7 @@ This is an api that provides an index of artists, albums, and artist's albums.
 
     URL: /albums/genre_ranking
 
-    Method: POST
+    Method: GET
 
     Response Data: 
     
@@ -232,7 +232,7 @@ This is an api that provides an index of artists, albums, and artist's albums.
 
     URL: /albums/year_ranking
 
-    Method: POST
+    Method: GET
 
     Response Data: 
     

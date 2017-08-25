@@ -80,9 +80,9 @@ RSpec.describe 'Albums API', type: :request do
 
   end 
 
-  describe 'POST /albums/genre_ranking' do
+  describe 'GET /albums/genre_ranking' do
 
-    before { post "/albums/genre_ranking"  }
+    before { get "/albums/genre_ranking"  }
 
     it 'returns a successful response code' do
       expect(json).to_not be_empty
@@ -91,9 +91,9 @@ RSpec.describe 'Albums API', type: :request do
 
   end 
 
-  describe 'POST /albums/year_ranking' do
+  describe 'GET /albums/year_ranking' do
     
-    before { post "/albums/year_ranking"  }
+    before { get "/albums/year_ranking"  }
 
     it 'returns a successful response code' do
       expect(json).to_not be_empty
